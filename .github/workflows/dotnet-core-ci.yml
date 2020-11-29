@@ -20,14 +20,19 @@ jobs:
         source-url: https://nuget.pkg.github.com/Adamsimsy/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
     - name: Install dependencies
       run: dotnet restore source/Library/Library.csproj
+
     - name: Build
       run: dotnet build source/Library/Library.csproj --configuration Release --no-restore
+
     - name: Generate Nuget package
       run: dotnet pack source/Library/Library.csproj --configuration Release
+
     - uses: actions/upload-artifact@v2
       with:
         path: source/Library/bin/Release/Library.1.0.0.nupkg
-    - name: Publish package
-      run: dotnet nuget push "source/Library/bin/Release/Library.1.0.0.nupkg" --skip-duplicate --no-symbols true
+        
+    - name: Push to GitHub package registry
+      run: dotnet nuget push *.nupkg
