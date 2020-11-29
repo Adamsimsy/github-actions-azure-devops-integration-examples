@@ -33,6 +33,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         path: source/Library/bin/Release/Library.1.0.0.nupkg
-        
+
     - name: Push to GitHub package registry
-      run: dotnet nuget push *.nupkg
+      run: dotnet nuget push source/Library/bin/Release/Library.1.0.0.nupkg --source https://nuget.pkg.github.com/Adamsimsy/index.json
+
