@@ -34,13 +34,4 @@ jobs:
         path: source/Library/bin/Release/Library.1.0.0.nupkg
 
     - name: NuGet push
-      run: |
-        dotnet nuget push source/Library/bin/Release/Library.1.0.0.nupkg
-
-    - name: Publish nuget
-      run: |
-           for f in ./[repository]/bin/Release/*.nupkg
-           do
-             curl -vX PUT -u "Adamsimsy:${{ secrets.GHPackagesToken }}" -F package=@$f https://nuget.pkg.github.com/Adamsimsy/
-           done
-      shell: bash
+      run: dotnet nuget push source/Library/bin/Release/Library.1.0.0.nupkg -source "github"
