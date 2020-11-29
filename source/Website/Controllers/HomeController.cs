@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Website.Models;
+using Library;
 
 namespace Website.Controllers
 {
@@ -20,7 +21,9 @@ namespace Website.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var model = new ExampleModel() { Html = "<p>Using model from Library.</p>" };
+
+            return View(model);
         }
 
         public IActionResult Privacy()
