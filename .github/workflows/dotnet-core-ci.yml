@@ -34,4 +34,4 @@ jobs:
         path: source/Library/bin/Release/Library.1.0.0.nupkg
 
     - name: NuGet push
-      run: dotnet nuget push "source/Library/bin/Release/Library.1.0.0.nupkg" -source "github"
+      run: dotnet nuget push "source/Library/bin/Release/Library.1.0.0.nupkg" --source "github"
