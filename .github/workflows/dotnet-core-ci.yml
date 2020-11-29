@@ -35,4 +35,4 @@ jobs:
 
     - name: NuGet push
       run: |
-        dotnet nuget push **/*.nupkg --source github
+        dotnet nuget push source/Library/bin/Release/Library.1.0.0.nupkg
