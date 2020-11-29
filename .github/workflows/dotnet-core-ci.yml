@@ -21,3 +21,5 @@ jobs:
       run: dotnet restore source/Library/Library.csproj
     - name: Build
       run: dotnet build source/Library/Library.csproj --configuration Release --no-restore
+    - name: Generate Nuget
+      run: dotnet pack source/Library/Library.csproj
