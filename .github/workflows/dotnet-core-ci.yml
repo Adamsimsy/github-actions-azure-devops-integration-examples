@@ -36,6 +36,6 @@ jobs:
       run: |
            for f in ./source/Library/bin/Release/*.nupkg
            do
-             curl -vX PUT -u "adamsimsy:${{ secrets.GHPackagesToken }}" -F package=@$f https://nuget.pkg.github.com/adamsimsy/
+             curl -vX PUT -u "adamsimsy:${{ secrets.GITHUB_TOKEN }}" -F package=@$f https://nuget.pkg.github.com/adamsimsy/
            done
       shell: bash
