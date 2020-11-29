@@ -32,6 +32,11 @@ jobs:
       with:
         path: source/Library/bin/Release/Library.1.0.0.nupkg
 
+
+    - name: Publish nuget to GitHub Packages 1
+      run: curl -vX PUT -u "adamsimsy:${{ secrets.GITHUB_TOKEN }}" -F package=@source/Library/bin/Release/Library.1.0.0.nupkg https://nuget.pkg.github.com/adamsimsy/
+      shell: bash
+
     - name: Publish nuget to GitHub Packages
       run: |
            for f in ./source/Library/bin/Release/*.nupkg
