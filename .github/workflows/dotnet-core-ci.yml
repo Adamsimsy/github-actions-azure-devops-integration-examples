@@ -18,8 +18,6 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
-      run: dotnet restore source/library/library.csproj
+      run: dotnet restore source/Library/Library.csproj
     - name: Build
-      run: dotnet build source/library/library.csproj --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet build source/Library/Library.csproj --configuration Release --no-restore
