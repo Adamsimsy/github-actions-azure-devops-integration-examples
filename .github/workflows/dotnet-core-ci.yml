@@ -12,9 +12,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
+
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1.5.0
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.100
 
     - name: Install dependencies
       run: dotnet restore source/Library/Library.csproj
@@ -29,7 +32,10 @@ jobs:
       with:
         path: source/Library/bin/Release/Library.1.0.0.nupkg
 
-    - name: NuGet push
-      run: dotnet nuget push "source/Library/bin/Release/Library.1.0.0.nupkg" --source https://nuget.pkg.github.com/adamsimsy/github-actions-azure-devops-integration-examples/index.json --api-key ${{github.token}} --skip-duplicate --no-symbols true
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Publish nuget to GitHub Packages
+      run: |
+           for f in ./source/Library/bin/Release/*.nupkg
+           do
+             curl -vX PUT -u "adamsimsy:${{ secrets.GHPackagesToken }}" -F package=@$f https://nuget.pkg.github.com/adamsimsy/
+           done
+      shell: bash
