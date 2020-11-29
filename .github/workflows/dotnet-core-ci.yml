@@ -30,4 +30,4 @@ jobs:
         path: source/Library/bin/Release/Library.1.0.0.nupkg
 
     - name: NuGet push
-      run: dotnet nuget push "source/Library/bin/Release/Library.1.0.0.nupkg" --source https://nuget.pkg.github.com/adamsimsy --api-key ${{github.token}} --skip-duplicate --no-symbols true
+      run: dotnet nuget push "source/Library/bin/Release/Library.1.0.0.nupkg" --source https://nuget.pkg.github.com/adamsimsy/index.json --api-key ${{github.token}} --skip-duplicate --no-symbols true
