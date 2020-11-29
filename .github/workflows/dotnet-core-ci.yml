@@ -25,7 +25,6 @@ jobs:
       run: dotnet pack source/Library/Library.csproj --configuration Release
     - uses: actions/upload-artifact@v2
       with:
-        name: my-artifact
         path: source/Library/bin/Release/Library.1.0.0.nupkg
     - name: Publish package
       run: dotnet nuget push source/Library/bin/Release/Library.1.0.0.nupkg --source "github"
