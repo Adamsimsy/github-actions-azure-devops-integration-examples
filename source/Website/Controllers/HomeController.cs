@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Website.Models;
 using Library;
+using Microsoft.Extensions.Configuration;
 
 namespace Website.Controllers
 {
@@ -21,7 +22,8 @@ namespace Website.Controllers
 
         public IActionResult Index()
         {
-            var model = new ExampleModel() { Html = "<p>Using model from Library.</p>" };
+            var secret = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build()["my-first-secret"];
+            var model = new ExampleModel { Html = "<p>Using model from Library.</p>", Secret = secret };
 
             return View(model);
         }
