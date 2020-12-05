@@ -54,6 +54,14 @@ jobs:
     - run: |
         az webapp list --query "[?state=='Running']"
     
+    - run: | 
+        az extension add -n azure-devops
+
+    - run: |
+        echo ${{ secrets.AZURE_DEVOPS_CLI_PAT }} | az devops login
+      env:
+        AZURE_DEVOPS_CLI_PAT: $(System.AccessToken)
+    
     - run: |
         az artifacts universal publish \
         --organization https://dev.azure.com/adamsimsy0955/ \
