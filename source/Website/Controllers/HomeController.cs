@@ -22,7 +22,7 @@ namespace Website.Controllers
 
         public IActionResult Index()
         {
-            var secret = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build()["my-first-secret"];
+            var secret = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build()["myFirstSecret"];
             var model = new ExampleModel { Html = "<p>Using model from Library.</p>", Secret = secret };
 
             return View(model);
