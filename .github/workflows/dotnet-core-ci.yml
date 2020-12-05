@@ -44,3 +44,7 @@ jobs:
              curl -vX PUT -u "adamsimsy:${{ secrets.package_token }}" -F package=@$f https://nuget.pkg.github.com/adamsimsy/
            done
       shell: bash
+
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
