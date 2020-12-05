@@ -72,4 +72,4 @@ jobs:
         --name my-first-package \
         --version 0.0.1 \
         --description "Welcome to Universal Packages" \
-        --path .
+        --path source/Library/bin/Release/Library.1.0.0.nupkg
