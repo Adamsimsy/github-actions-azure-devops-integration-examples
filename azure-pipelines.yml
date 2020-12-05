@@ -32,7 +32,12 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: true
-
+    
+- task: FileTransform@1
+  inputs:
+    folderPath: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    fileType: 'json'
+    targetFiles: '**/appsettings.json'
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
