@@ -55,4 +55,12 @@ jobs:
         az webapp list --query "[?state=='Running']"
     
     - run: |
-        az artifacts universal publish --organization https://dev.azure.com/adamsimsy0955/ --feed DotnetFeed --name my-first-package --version 0.0.1 --description "Welcome to Universal Packages" --path .
+        az artifacts universal publish \
+        --organization https://dev.azure.com/adamsimsy0955/ \
+        --project="github-actions-azure-devops-integration-examples" \
+        --scope project \
+        --feed github-actions-azure-devops-integration-examples \
+        --name my-first-package \
+        --version 0.0.1 \
+        --description "Welcome to Universal Packages" \
+        --path .
