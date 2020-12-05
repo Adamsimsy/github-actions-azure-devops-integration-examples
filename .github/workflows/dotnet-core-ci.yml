@@ -70,6 +70,6 @@ jobs:
         --scope project \
         --feed github-actions-azure-devops-integration-examples \
         --name my-first-package \
-        --version 0.0.1 \
+        --version 0.0.${{ github.run_number }} \
         --description "Welcome to Universal Packages" \
         --path source/Library/bin/Release/Library.1.0.0.nupkg
