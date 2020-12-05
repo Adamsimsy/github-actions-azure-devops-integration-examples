@@ -60,7 +60,8 @@ jobs:
     - run: |
         echo ${{ secrets.AZURE_DEVOPS_CLI_PAT }} | az devops login
       env:
-        AZURE_DEVOPS_CLI_PAT: $(System.AccessToken)
+        AZURE_DEVOPS_CLI_PAT: ${{ secrets.AZURE_DEVOPS_CLI_PAT }}
+        AZURE_DEVOPS_EXT_PAT: ${{ secrets.AZURE_DEVOPS_CLI_PAT }}
     
     - run: |
         az artifacts universal publish \
