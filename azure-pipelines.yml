@@ -37,3 +37,4 @@ steps:
     WebAppName: 'github-actions-azure-devops-integration-examples'
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
     RuntimeStack: 'DOTNETCORE|3.1'
+    JSONFiles: '**/appsettings.json'
