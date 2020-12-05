@@ -13,6 +13,9 @@ variables:
 - group: github-actions-azure-devops-key-vault
 
 steps:
+  variables:
+    my-first-secret: 'Testing pipeline variable'
+
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
