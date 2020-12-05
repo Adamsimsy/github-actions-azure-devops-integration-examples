@@ -9,12 +9,13 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-- group: github-actions-azure-devops-key-vault
+#variables:
+#- group: github-actions-azure-devops-key-vault
 
+variables:
+  my-first-secret: 'Testing pipeline variable'
+  
 steps:
-  variables:
-    my-first-secret: 'Testing pipeline variable'
 
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
