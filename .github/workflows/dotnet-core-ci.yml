@@ -45,9 +45,11 @@ jobs:
            done
       shell: bash
 
-    - uses: azure/login@v1
+    - uses: Azure/login@v1
+      env:
+        CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        creds: ${{ env.CREDENTIALS }}
 
     - run: |
         az webapp list --query "[?state=='Running']"
